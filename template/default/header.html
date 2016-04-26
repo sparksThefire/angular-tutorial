@@ -1,0 +1,13 @@
+<div class="navbar navbar-default" ng-controller='headerCtrl as hea' >
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        <li ng-repeat="page in hea.pageList"
+              ng-class="{ active: isSelected('/{{page}}') }"
+              ng-click="hea.select(page)">
+          <a ng-href="#/{{page}}">{{page}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
