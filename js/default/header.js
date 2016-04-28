@@ -1,23 +1,27 @@
 (function() {
   var app = angular.module('myApp');
 
-  var pages = ["Home", "Page1", "Page2"];
-
-  var currentItem = pages[0];
-
-  app.directive('headerDir', function() {
+  app.directive('headerDir', function($location, $injector) {
+    var pageSer = $injector.get('PageService');
+    // Autoselect the first item in the pages menu
+    $location.path(pageSer.pages[0]);
     return {
       restrict: 'E',
       templateUrl: 'template/default/header.html'
     };
   });
 
-  app.controller('headerCtrl', function($scope, $location) {
+  app.controller('headerCtrl', function($scope, $location, $injector) {
     var hea = this;
-    hea.pageList = pages;
+    var pageSer = $injector.get('PageService');
+    hea.pageList = pageSer.pages;
+
+    $scope.homePage = function() {
+      return pageSer.homePage();
+    };
 
      $scope.isSelected = function(page) {
-        return page === $location.path();
+        return pageSer.isSelected(page);
     };
   });
 

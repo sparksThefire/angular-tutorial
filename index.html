@@ -2,17 +2,18 @@
 <html lang="en-US" ng-app="myApp">
 <head>
   <meta charset="utf-8">
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+  <title>Angular Seed</title>
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/bootstrap-theme.min.css">
 </head>
 <body class="container">
-  <h1><a href=""#"">My App</a></h1>
   <header-dir></header-dir>
+  <sidebar-dir></sidebar-dir>
 
-  <marketing-dir></marketing-dir>
-
-  <home-dir></home-dir>
+<div class="col-sm-9" ng-controller="pageCtrl as pc" style="margin-bottom: 50px;">
+  <home-dir ng-show="isSelected('/Home')" ></home-dir>
+  <about ng-show="isSelected('/About')" ></about>
+</div>
 
   <footer-dir></footer-dir>
 
@@ -20,9 +21,12 @@
   <script type="text/javascript" src="js/resources/bootstrap.min.js" ></script>
   <script type="text/javascript" src="js/resources/angular.min.js" ></script>
   <script src="js/app.js" ></script>
+  <script src="js/service/pageService.js" ></script>
   <script src="js/default/header.js" ></script>
+  <script src="js/default/sidebar.js" ></script>
   <script src="js/home.js" ></script>
   <script src="js/marketing.js" ></script>
+  <script src="js/about.js" ></script>
   <script src="js/default/footer.js" ></script>
 </body>
 </html>
